@@ -1,12 +1,14 @@
 package com.example.mvvmretro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.example.mvvmretro.Model.NewsItem;
 import com.example.mvvmretro.Model.NewsResponce;
@@ -29,18 +31,20 @@ public class MainActivity extends AppCompatActivity {
         retriveNews();
         setUpRv();
     }
-    private void setUpRv(){
-        if (newsItemAdapter==null){
+
+    private void setUpRv() {
+        if (newsItemAdapter == null) {
             // set up rv
             recyclerView = findViewById(R.id.rvNews);
-            newsItemAdapter = new NewsItemAdapter(MainActivity.this,newsItemArrayList);
+            newsItemAdapter = new NewsItemAdapter(MainActivity.this, newsItemArrayList);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(newsItemAdapter);
-        }else{
+        } else {
             newsItemAdapter.notifyDataSetChanged();
         }
     }
-    private void retriveNews(){
+
+    private void retriveNews() {
         // view model
         newsViewModel = new ViewModelProvider(this,
                 ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication()))

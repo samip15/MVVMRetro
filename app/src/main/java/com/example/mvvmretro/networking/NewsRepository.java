@@ -35,7 +35,7 @@ public class NewsRepository {
             @Override
             public void onResponse(Call<NewsResponce> call, Response<NewsResponce> response) {
                 if (response.isSuccessful()){
-                    // sttting our response directly as it get automatically
+                    // setting our response directly as it get automatically
                     newsData.setValue(response.body());
                 }
             }
